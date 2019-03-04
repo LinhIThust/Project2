@@ -63,4 +63,13 @@ public class SanPham {
     public void setGiaSP(String giaSP) {
         this.giaSP = giaSP;
     }
+
+    @Override
+    public String toString() {
+        return "SanPham{" +
+                ", nameSP='" + nameSP + '\'' +
+                ", giaSP='" + giaSP + '\'' +
+                ", imageSP='" + imageSP + '\'' +
+                '}';
+    }
 }

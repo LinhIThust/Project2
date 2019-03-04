@@ -1,7 +1,9 @@
 package com.example.project2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -12,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,23 +23,28 @@ import com.example.project2.account.Login;
 import com.example.project2.adapter.SanPhamAdapter;
 import com.example.project2.model.SanPham;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.project2.GeneralProperties.AUFIREBASE;
+import static com.example.project2.GeneralProperties.PROGRESSDIALOG;
+
+import static com.example.project2.databases.Data.getDataSP;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView recyclerView;
-    List<SanPham> listSanPham;
     SanPhamAdapter sanPhamAdapter;
+    List<SanPham> listSanPham;
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.rv_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        PROGRESSDIALOG = new ProgressDialog(this);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -98,7 +106,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_thietbi) {
         } else if (id == R.id.nav_muahang) {
-           setView();
+            setSanPhamView();
         } else if (id == R.id.nav_dichvu) {
 
         } else if (id == R.id.nav_hotro) {
@@ -108,30 +116,14 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_dangxuat) {
             AUFIREBASE.signOut();
             startActivity(new Intent(MainActivity.this, Login.class));
-
-
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public void setView(){
 
-        listSanPham = new ArrayList<>();
-        SanPham s1 = new SanPham("kagaroo1","150$","https://www.upsieutoc.com/images/2019/03/01/kangaroo2.jpg");
-        SanPham s2 = new SanPham("kagaroo2","250$","https://www.upsieutoc.com/images/2019/03/01/karofi2.png");
-        SanPham s3 = new SanPham("kagaroo3","350$","https://www.upsieutoc.com/images/2019/03/01/karofi.jpg");
-        SanPham s4 = new SanPham("kagaroo4","50$","https://www.upsieutoc.com/images/2019/03/01/karofi3.jpg");
-        SanPham s5 = new SanPham("kagaroo11","10$","https://www.upsieutoc.com/images/2019/03/01/kangaroo1.jpg");
-        SanPham s6 = new SanPham("kagaroo22","1505$","https://www.upsieutoc.com/images/2019/03/01/fuij.jpg");
-        listSanPham.add(s1);
-        listSanPham.add(s4);
-        listSanPham.add(s3);
-        listSanPham.add(s2);
-        listSanPham.add(s5);
-        listSanPham.add(s6);
-
-        sanPhamAdapter = new SanPhamAdapter(listSanPham);
+    public void setSanPhamView() {
+        sanPhamAdapter = new SanPhamAdapter(getDataSP());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(sanPhamAdapter);

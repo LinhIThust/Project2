@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.project2.GeneralProperties.PROGRESSDIALOG;
+
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamViewHolder>{
    List<SanPham> sanPhams = new ArrayList<>();
