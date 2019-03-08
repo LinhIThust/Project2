@@ -47,4 +47,14 @@ public class KhachHang {
     public void setMaDonHang(String maDonHang) {
         this.maDonHang = maDonHang;
     }
+
+    @Override
+    public String toString() {
+        return "KhachHang{" +
+                "nameKH='" + nameKH + '\'' +
+                ", diaChiKH='" + diaChiKH + '\'' +
+                ", sdtKH='" + sdtKH + '\'' +
+                ", maDonHang='" + maDonHang + '\'' +
+                '}';
+    }
 }

@@ -15,9 +15,9 @@ public class GeneralProperties {
     public static final FirebaseAuth AUFIREBASE = FirebaseAuth.getInstance();
     public static final FirebaseDatabase FIREBASE_DATABASE = FirebaseDatabase.getInstance();
 
-    //public  static  List<SanPham> listSanPham =new ArrayList<>();
-   // public  static final DatabaseReference databaseKhachHang =FIREBASE_DATABASE.getReference("KhachHang");
-    public  static final DatabaseReference databaseSanPham =FIREBASE_DATABASE.getReference("SanPham");
+    public static final DatabaseReference databaseKhachHang = FIREBASE_DATABASE.getReference("KhachHang");
+    public static final DatabaseReference databaseSanPham = FIREBASE_DATABASE.getReference("SanPham");
+    public static final DatabaseReference databaseHoaDon = FIREBASE_DATABASE.getReference("HoaDon");
 
     private static final String TAG = "GeneralProperties";
     public static ProgressDialog PROGRESSDIALOG;

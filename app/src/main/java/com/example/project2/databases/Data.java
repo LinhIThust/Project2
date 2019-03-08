@@ -11,27 +11,29 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.project2.GeneralProperties.PROGRESSDIALOG;
+
 import static com.example.project2.GeneralProperties.databaseSanPham;
-//import static com.example.project2.GeneralProperties.listSanPham;
 
 public class Data {
-    public static List<SanPham> getDataSP(){
-        final List<SanPham> list = new ArrayList<>();
+
+    public static List<SanPham> getDataSP() {
+        final List<SanPham> listSP = new ArrayList<>();
         databaseSanPham.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.d("a", "onDataChange: "+dataSnapshot);
-                for (DataSnapshot sanPhamSnapshot : dataSnapshot.getChildren()){
+                Log.d("a", "onDataChange: " + dataSnapshot);
+                for (DataSnapshot sanPhamSnapshot : dataSnapshot.getChildren()) {
                     SanPham sanPham = sanPhamSnapshot.getValue(SanPham.class);
-                    list.add(sanPham);
+                    listSP.add(sanPham);
                 }
-             Log.d("a", "onDataChange: "+ list.toString());
+                Log.d("a", "onDataChange: " + listSP.toString());
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("a", "onCancelled: "+databaseError.getDetails());                    }
+                Log.d("a", "onCancelled: " + databaseError.getDetails());
+            }
         });
-        return list;
+        return listSP;
     }
+
 }

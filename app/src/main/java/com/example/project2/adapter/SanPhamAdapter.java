@@ -11,14 +11,15 @@ import android.widget.TextView;
 import com.example.project2.R;
 import com.example.project2.model.SanPham;
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.project2.GeneralProperties.PROGRESSDIALOG;
 
 
-public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamViewHolder>{
-   List<SanPham> sanPhams = new ArrayList<>();
+public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamViewHolder> {
+    List<SanPham> sanPhams = new ArrayList<>();
 
     public SanPhamAdapter(List<SanPham> sanPhams) {
         this.sanPhams = sanPhams;
@@ -28,8 +29,8 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamV
     //tạo itemview chi dung 1 lan khi recycle view khoi tao
     @Override
     public SanPhamViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        LayoutInflater layoutInflater =LayoutInflater.from(viewGroup.getContext());
-        View intView = layoutInflater.inflate(R.layout.sampham,null);
+        LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
+        View intView = layoutInflater.inflate(R.layout.sampham, null);
         return new SanPhamViewHolder(intView);
     }
 
@@ -46,19 +47,20 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamV
 
     public class SanPhamViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView nameSP,hangSP,giaSP;
+        TextView nameSP, hangSP, giaSP;
 
         public SanPhamViewHolder(@NonNull View itemView) {
             super(itemView);
             this.imageView = itemView.findViewById(R.id.iv_sanpham);
             this.nameSP = itemView.findViewById(R.id.tv_name_sp);
-            this.hangSP =itemView.findViewById(R.id.tv_hang_sp);
+            this.hangSP = itemView.findViewById(R.id.tv_hang_sp);
             this.giaSP = itemView.findViewById(R.id.tv_gia);
         }
-        public void setData(SanPham sanPham){
+
+        public void setData(SanPham sanPham) {
             Picasso.get().load(sanPham.getImageSP()).into(imageView);
             nameSP.setText(sanPham.getNameSP());
-            giaSP.setText("Giá "+sanPham.getGiaSP()+"");
+            giaSP.setText("Giá " + sanPham.getGiaSP() + "");
             hangSP.setText("Hàng Việt Nam Chất Lượng Cao!");
         }
 

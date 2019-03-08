@@ -12,12 +12,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.project2.R;
+import com.example.project2.model.KhachHang;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
 import static com.example.project2.GeneralProperties.AUFIREBASE;
 import static com.example.project2.GeneralProperties.PROGRESSDIALOG;
+import static com.example.project2.GeneralProperties.databaseKhachHang;
+import static com.example.project2.GeneralProperties.indexKH;
 
 public class SignUp extends AppCompatActivity {
     EditText edName, edPhone, edAddr, edPass, edRePass;
@@ -38,42 +41,48 @@ public class SignUp extends AppCompatActivity {
         edPass = findViewById(R.id.ed_pass_sign_up);
         edRePass = findViewById(R.id.ed_rep_pass_sign_up);
         btOk = findViewById(R.id.bt_ok);
-        PROGRESSDIALOG =new ProgressDialog(this);
+        PROGRESSDIALOG = new ProgressDialog(this);
 
     }
 
-    public void setUI(){
+    public void setUI() {
         btOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String name = edName.getText().toString();
-                String phone = edPhone.getText().toString().concat("@gmail.com");
-                String addres = edAddr.getText().toString();
+                final String phone = edPhone.getText().toString().concat("@gmail.com");
+                final String addres = edAddr.getText().toString();
                 String pass = edPass.getText().toString();
                 String rePass = edRePass.getText().toString();
-                if(TextUtils.isEmpty(name)){
-                    Toast.makeText(SignUp.this,"Vui lòng điền tên của bạn!",Toast.LENGTH_SHORT).show();;
+                if (TextUtils.isEmpty(name)) {
+                    Toast.makeText(SignUp.this, "Vui lòng điền tên của bạn!", Toast.LENGTH_SHORT).show();
+                    ;
                     return;
                 }
-                if(TextUtils.isEmpty(phone)){
-                    Toast.makeText(SignUp.this,"Vui lòng điền sô điện thoại của bạn!",Toast.LENGTH_SHORT).show();;
+                if (TextUtils.isEmpty(phone)) {
+                    Toast.makeText(SignUp.this, "Vui lòng điền sô điện thoại của bạn!", Toast.LENGTH_SHORT).show();
+                    ;
                     return;
                 }
-                if(TextUtils.isEmpty(pass)){
-                    Toast.makeText(SignUp.this,"Vui lòng điền mật khẩu của bạn!",Toast.LENGTH_SHORT).show();;
+                if (TextUtils.isEmpty(pass)) {
+                    Toast.makeText(SignUp.this, "Vui lòng điền mật khẩu của bạn!", Toast.LENGTH_SHORT).show();
+                    ;
                     return;
                 }
-                if(TextUtils.isEmpty(rePass)){
-                    Toast.makeText(SignUp.this,"Vui lòng điền nhập lại mật khẩu ở trên!",Toast.LENGTH_SHORT).show();;
+                if (TextUtils.isEmpty(rePass)) {
+                    Toast.makeText(SignUp.this, "Vui lòng điền nhập lại mật khẩu ở trên!", Toast.LENGTH_SHORT).show();
+                    ;
                     return;
                 }
-                if(!pass.equals(rePass)){
-                    Toast.makeText(SignUp.this,"Mật khẩu không khớp!",Toast.LENGTH_SHORT).show();;
+                if (!pass.equals(rePass)) {
+                    Toast.makeText(SignUp.this, "Mật khẩu không khớp!", Toast.LENGTH_SHORT).show();
+                    ;
                     return;
                 }
 
-                if(pass.length() <6){
-                    Toast.makeText(SignUp.this,"Mật khẩu ít nhất 6 kí tự!",Toast.LENGTH_SHORT).show();;
+                if (pass.length() < 6) {
+                    Toast.makeText(SignUp.this, "Mật khẩu ít nhất 6 kí tự!", Toast.LENGTH_SHORT).show();
+                    ;
                     return;
                 }
                 PROGRESSDIALOG.setMessage("Vui lòng chờ!");
@@ -87,6 +96,9 @@ public class SignUp extends AppCompatActivity {
                                     Toast.makeText(SignUp.this, "Không Thành Công", Toast.LENGTH_SHORT).show();
                                 } else {
                                     AUFIREBASE.signOut();
+                                    databaseKhachHang.push().setValue(new KhachHang(
+                                            name, addres, phone, "Chưa mua sản phẩm nào"
+                                    ));
                                     startActivity(new Intent(SignUp.this, Login.class));
                                 }
                             }
