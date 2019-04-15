@@ -2,70 +2,77 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#628BAF"
+    android:background="#B945B2E7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.Home">
 
-    <TextView
-        android:id="@+id/tv_name2"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="32dp"
-        android:layout_weight="1"
-        android:text="Khách Hàng    :"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_sdt2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_sdt2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-
-        android:layout_marginBottom="32dp"
-        android:layout_weight="1"
-        android:text="Số Điện Thoại :"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_dia_chi2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_dia_chi2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-
-        android:layout_marginBottom="32dp"
-        android:layout_weight="1"
-        android:text="Địa Chỉ             :"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_hoa_don2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_hoa_don2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-
-        android:layout_marginBottom="32dp"
-        android:layout_weight="1"
-        android:text="Hóa Đơn          :"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_height="186dp"
+        android:layout_marginBottom="28dp"
+        android:background="#254A58BB"
         app:layout_constraintBottom_toTopOf="@+id/bt_thiet_bi"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_sdt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_phone_android_black_24dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <TextView
+            android:id="@+id/tv_dia_chi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_add_location_black_24dp"
+            android:lines="2"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sdt" />
+
+        <TextView
+            android:id="@+id/tv_hoa_don"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_store_mall_directory_black_24dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dia_chi" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <Button
         android:id="@+id/bt_thiet_bi"

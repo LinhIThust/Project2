@@ -15,8 +15,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.project2.GeneralProperties.PROGRESSDIALOG;
-
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamViewHolder> {
     List<SanPham> sanPhams = new ArrayList<>();
@@ -30,7 +28,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamV
     @Override
     public SanPhamViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
-        View intView = layoutInflater.inflate(R.layout.sampham, null);
+        View intView = layoutInflater.inflate(R.layout.sam_pham, null);
         return new SanPhamViewHolder(intView);
     }
 
