@@ -39,7 +39,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = AUFIREBASE.getCurrentUser();
         if (currentUser != null) {
             Intent intent = new Intent(Login.this, Home.class);

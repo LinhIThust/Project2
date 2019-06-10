@@ -18,6 +18,7 @@ import java.util.Calendar;
 import static com.example.project2.GeneralProperties.checkLogOut;
 
 public class Notification extends Service {
+
     public Notification() {
     }
 

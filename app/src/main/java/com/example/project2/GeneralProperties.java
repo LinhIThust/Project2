@@ -30,6 +30,8 @@ public class GeneralProperties {
     public static  List<DonHang> donHangList = new ArrayList<>();
 
     public static  List<String> hanDungKangaroo = Arrays.asList(new String[]{"3,6","6,9","9,12","24,36","17,18","12,16","23,24","10,12"});
+    public static  List<String> hanDungKarofi = Arrays.asList(new String[]{"3,6","6,9","9,12","24,36","17,18","12,16","23,24","10,12"});
+
     public static  List<Long> ngayThayBoLoc = new ArrayList<>();
     public static ProgressDialog PROGRESSDIALOG;
 
